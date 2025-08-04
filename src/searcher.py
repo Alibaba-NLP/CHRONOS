@@ -35,7 +35,7 @@ def search_single(query: str, search_engine: str, freshness: str = '') -> List[D
 def bing_request(query: str, count: int = 50, freshness: str = '') -> List[Dict[str, str]]:
     endpoint = "https://api.bing.microsoft.com/v7.0/search"
     headers = {'Ocp-Apim-Subscription-Key': BING_SEARCH_KEY}
-    params = {'q': query, 'count': count, 'responseFilter': 'Webpages'}
+    params = {'q': query, 'count': count, 'responseFilter': 'Webpages', 'freshness': f'1900-01-01..{freshness}'}
     try:
         response = requests.get(endpoint, headers=headers, params=params)
         response.raise_for_status()
